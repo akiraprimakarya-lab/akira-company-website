@@ -61,7 +61,7 @@ export function Reveal({ children, className = "", delay = 0 }: RevealProps) {
   return (
     <div
       ref={ref}
-      className={`reveal-fade-up ${isPending ? "is-pending" : ""} ${isVisible ? "is-visible" : ""} ${className}`}
+      className={`reveal-fade-up min-w-0 w-full max-w-full ${isPending ? "is-pending" : ""} ${isVisible ? "is-visible" : ""} ${className}`}
       style={{ transitionDelay: `${delay}ms` }}
     >
       {children}

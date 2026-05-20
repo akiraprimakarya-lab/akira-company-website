@@ -32,6 +32,7 @@ export default function AboutPage() {
               src="/images/tentang-kami/about-company-workshop.jpg.jpeg"
               title="Workshop produksi PT Akira Prima Karya"
               height="sm:min-h-[420px]"
+              mobileImageFit="contain"
             />
           </Reveal>
         </Container>

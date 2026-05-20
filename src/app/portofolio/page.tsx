@@ -12,7 +12,7 @@ export default function PortfolioPage() {
     <>
       <section className="py-10 sm:py-24">
         <Container className="grid gap-10 lg:grid-cols-[1fr_0.95fr] lg:items-center">
-          <Reveal>
+          <Reveal className="min-w-0">
             <SectionHeading
               eyebrow="Portofolio"
               title="Showcase proyek dengan tampilan visual yang meyakinkan calon klien."
@@ -23,7 +23,8 @@ export default function PortfolioPage() {
             <ImagePlaceholder
               src="/images/portfolio-showcase-collage.jpg"
               title="Showcase hasil proyek signage dan akrilik PT Akira Prima Karya"
-              height="min-h-[420px]"
+              height="sm:min-h-[420px]"
+              mobileImageFit="contain"
             />
           </Reveal>
         </Container>

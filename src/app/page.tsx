@@ -39,7 +39,7 @@ export default function HomePage() {
             <ImagePlaceholder
               src="/images/about-workflow-process.jpg"
               title="Produksi detail untuk kebutuhan brand environment"
-              height="min-h-[420px]"
+              height="sm:min-h-[420px]"
             />
           </Reveal>
         </Container>
