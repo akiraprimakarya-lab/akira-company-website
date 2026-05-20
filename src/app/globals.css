@@ -1,0 +1,118 @@
+@import "tailwindcss";
+
+:root {
+  --color-midnight-ink: #00051a;
+  --color-royal-blue: #0f68ea;
+  --color-sky-blue: #007aff;
+  --color-sunburst-yellow: #ffcb00;
+  --color-white-canvas: #ffffff;
+  --color-pewter-gray: #1d1d1f;
+  --color-white-smoke: #f0f2f4;
+  --color-slate-blue: #000a3b;
+  --color-soft-gray: #e5e6e8;
+  --shadow-xl: rgba(0, 0, 0, 0.06) 0px 8px 48px 0px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--color-white-canvas);
+  color: var(--color-midnight-ink);
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  overflow-x: clip;
+}
+
+a {
+  text-decoration: none;
+}
+
+.reveal-fade-up {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  transition:
+    opacity 0.72s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.72s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-fade-up.is-pending {
+  opacity: 0;
+  transform: translate3d(0, 28px, 0);
+}
+
+.reveal-fade-up.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.interactive-card {
+  transition:
+    transform 0.26s ease,
+    box-shadow 0.26s ease,
+    border-color 0.26s ease,
+    background-color 0.26s ease;
+  will-change: transform, box-shadow;
+}
+
+.interactive-card:hover {
+  transform: translate3d(0, -4px, 0);
+  box-shadow: 0 20px 48px rgba(15, 23, 42, 0.12);
+}
+
+.interactive-button {
+  transition:
+    transform 0.22s ease,
+    background-color 0.22s ease,
+    color 0.22s ease,
+    box-shadow 0.22s ease,
+    border-color 0.22s ease;
+}
+
+.interactive-button:hover {
+  transform: translate3d(0, -1px, 0) scale(1.02);
+}
+
+.interactive-media img {
+  transition: transform 0.72s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.interactive-media:hover img {
+  transform: scale(1.035);
+}
+
+::selection {
+  background: rgba(15, 104, 234, 0.18);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal-fade-up {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .interactive-card,
+  .interactive-button,
+  .interactive-media img {
+    transition: none;
+  }
+
+  .interactive-card:hover,
+  .interactive-button:hover,
+  .interactive-media:hover img {
+    transform: none;
+    box-shadow: inherit;
+  }
+}
