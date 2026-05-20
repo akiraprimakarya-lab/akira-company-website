@@ -12,8 +12,9 @@ export function Hero() {
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,_rgba(15,104,234,0.16),_transparent_38%),linear-gradient(180deg,_#ffffff_0%,_#f0f4fa_48%,_#ffffff_100%)]" />
       <Container className="grid items-center gap-5 sm:gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-12">
         <Reveal className="max-w-3xl">
-          <p className="inline-flex rounded-full border border-[var(--color-soft-gray)] bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-[var(--color-sky-blue)]">
-            Premium Signage & Acrylic Fabrication
+          <p className="inline-flex whitespace-nowrap rounded-full border border-[var(--color-soft-gray)] bg-white px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.08em] text-[var(--color-sky-blue)] sm:px-4 sm:text-xs sm:tracking-[0.24em]">
+            <span className="sm:hidden">Signage &amp; Acrylic</span>
+            <span className="hidden sm:inline">Premium Signage &amp; Acrylic Fabrication</span>
           </p>
           <h1 className="mt-4 text-[1.95rem] font-bold leading-[0.92] tracking-[-0.055em] text-[var(--color-midnight-ink)] sm:mt-6 sm:text-6xl lg:text-7xl">
             Visual branding yang dibuat presisi untuk ruang usaha modern.
@@ -38,7 +39,7 @@ export function Hero() {
           <ImagePlaceholder
             src="/images/hero-workshop.jpg"
             title="Workshop produksi akrilik dan signage"
-            height="min-h-[220px] sm:min-h-[420px]"
+            height="sm:min-h-[420px]"
             priority
           />
         </Reveal>

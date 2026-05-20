@@ -136,7 +136,7 @@ export default function ContactPage() {
             <ImagePlaceholder
               src="/images/kontak/kontak.jpg"
               title="Tim PT Akira Prima Karya siap melayani konsultasi proyek"
-              height="min-h-[280px]"
+              height="sm:min-h-[280px] lg:min-h-[320px]"
             />
             <ContactForm />
           </Reveal>

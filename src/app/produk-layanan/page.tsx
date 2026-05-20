@@ -59,7 +59,7 @@ export default function ServicesPage() {
             <ImagePlaceholder
               src="/images/produk-&-layanan/services-showcase-collage.jpg"
               title="Showcase produk signage dan acrylic PT Akira Prima Karya"
-              height="min-h-[240px] sm:min-h-[420px]"
+              height="sm:min-h-[420px]"
             />
           </Reveal>
         </Container>

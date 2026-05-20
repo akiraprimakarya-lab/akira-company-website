@@ -31,7 +31,7 @@ export default function AboutPage() {
             <ImagePlaceholder
               src="/images/tentang-kami/about-company-workshop.jpg.jpeg"
               title="Workshop produksi PT Akira Prima Karya"
-              height="min-h-[420px]"
+              height="sm:min-h-[420px]"
             />
           </Reveal>
         </Container>

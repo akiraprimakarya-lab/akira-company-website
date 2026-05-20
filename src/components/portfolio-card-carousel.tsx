@@ -54,29 +54,29 @@ export function PortfolioCardCarousel({ title, images }: PortfolioCardCarouselPr
 
   if (images.length === 0) {
     return (
-      <div className="relative min-h-[260px] overflow-hidden rounded-[28px] border border-black/5 bg-[var(--color-white-smoke)] shadow-[var(--shadow-xl)]" />
+      <div className="relative aspect-[16/9] overflow-hidden rounded-[28px] border border-black/5 bg-[var(--color-white-smoke)] shadow-[var(--shadow-xl)] sm:min-h-[260px] sm:aspect-auto" />
     );
   }
 
   return (
     <div
-      className="group relative min-h-[260px] touch-pan-y overflow-hidden rounded-[28px] border border-black/5 bg-[var(--color-white-smoke)] shadow-[var(--shadow-xl)]"
+      className="group relative aspect-[16/9] touch-pan-y overflow-hidden rounded-[28px] border border-black/5 bg-[var(--color-white-smoke)] shadow-[var(--shadow-xl)] sm:min-h-[260px] sm:aspect-auto"
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
       <div
-        className="flex min-h-[260px] transition-transform duration-300 ease-out"
+        className="flex h-full transition-transform duration-300 ease-out"
         style={{ transform: `translateX(-${activeIndex * 100}%)` }}
       >
         {images.map((image, index) => (
-          <div key={`${title}-${image}`} className="relative min-h-[260px] w-full shrink-0 grow-0 basis-full">
+          <div key={`${title}-${image}`} className="relative h-full w-full shrink-0 grow-0 basis-full">
             <Image
               src={image}
               alt={`${title} - foto ${index + 1}`}
               fill
               sizes="(min-width: 1024px) 50vw, 100vw"
               loading={index === 0 ? "eager" : "lazy"}
-              className="object-cover"
+              className="object-cover object-center"
             />
           </div>
         ))}
