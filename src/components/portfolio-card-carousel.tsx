@@ -54,7 +54,9 @@ export function PortfolioCardCarousel({ title, images }: PortfolioCardCarouselPr
 
   if (images.length === 0) {
     return (
-      <div className="relative aspect-[16/9] overflow-hidden rounded-[28px] border border-black/5 bg-[var(--color-white-smoke)] shadow-[var(--shadow-xl)] sm:min-h-[260px] sm:aspect-auto" />
+      <div className="relative flex aspect-[16/9] items-center justify-center overflow-hidden rounded-[28px] border border-black/5 bg-[var(--color-white-smoke)] px-6 text-center shadow-[var(--shadow-xl)] sm:min-h-[260px] sm:aspect-auto">
+        <p className="text-sm font-medium text-[var(--color-pewter-gray)]">Dokumentasi proyek akan segera ditambahkan.</p>
+      </div>
     );
   }
 

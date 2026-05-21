@@ -3,11 +3,9 @@ import { Container } from "@/components/container";
 import { ImagePlaceholder } from "@/components/image-placeholder";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
-import { getPortfolioItems } from "@/lib/portfolio-data";
+import { portfolioItems } from "@/lib/portfolio-content";
 
 export default function PortfolioPage() {
-  const portfolioItems = getPortfolioItems();
-
   return (
     <>
       <section className="py-10 sm:py-24">
