@@ -19,14 +19,38 @@ function ArrowIcon({ direction }: { direction: "left" | "right" }) {
 export function PortfolioCardCarousel({ title, images }: PortfolioCardCarouselProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
-  const hasMultipleImages = images.length > 1;
+  const [resolvedImages, setResolvedImages] = useState(images);
+  const hasMultipleImages = resolvedImages.length > 1;
+
+  function getAlternateImagePath(imagePath: string) {
+    if (imagePath.includes("/images/portfolio/")) {
+      return imagePath.replace("/images/portfolio/", "/images/portofolio/");
+    }
+
+    return null;
+  }
+
+  function handleImageError(index: number) {
+    setResolvedImages((currentImages) => {
+      const currentImage = currentImages[index];
+      const alternateImage = getAlternateImagePath(currentImage);
+
+      if (!alternateImage || alternateImage === currentImage) {
+        return currentImages;
+      }
+
+      const nextImages = [...currentImages];
+      nextImages[index] = alternateImage;
+      return nextImages;
+    });
+  }
 
   function goToIndex(nextIndex: number) {
     if (!hasMultipleImages) {
       return;
     }
 
-    const normalizedIndex = (nextIndex + images.length) % images.length;
+    const normalizedIndex = (nextIndex + resolvedImages.length) % resolvedImages.length;
     setActiveIndex(normalizedIndex);
   }
 
@@ -52,9 +76,9 @@ export function PortfolioCardCarousel({ title, images }: PortfolioCardCarouselPr
     setTouchStartX(null);
   }
 
-  if (images.length === 0) {
+  if (resolvedImages.length === 0) {
     return (
-      <div className="relative flex aspect-[16/9] items-center justify-center overflow-hidden rounded-[28px] border border-black/5 bg-[var(--color-white-smoke)] px-6 text-center shadow-[var(--shadow-xl)] sm:min-h-[260px] sm:aspect-auto">
+      <div className="relative flex aspect-[16/9] items-center justify-center overflow-hidden rounded-[28px] border border-black/5 bg-[var(--color-white-smoke)] px-6 text-center shadow-[var(--shadow-xl)] sm:h-[260px] sm:aspect-auto">
         <p className="text-sm font-medium text-[var(--color-pewter-gray)]">Dokumentasi proyek akan segera ditambahkan.</p>
       </div>
     );
@@ -62,7 +86,7 @@ export function PortfolioCardCarousel({ title, images }: PortfolioCardCarouselPr
 
   return (
     <div
-      className="group relative aspect-[16/9] touch-pan-y overflow-hidden rounded-[28px] border border-black/5 bg-[var(--color-white-smoke)] shadow-[var(--shadow-xl)] sm:min-h-[260px] sm:aspect-auto"
+      className="group relative aspect-[16/9] touch-pan-y overflow-hidden rounded-[28px] border border-black/5 bg-[var(--color-white-smoke)] shadow-[var(--shadow-xl)] sm:h-[260px] sm:aspect-auto"
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
@@ -70,8 +94,8 @@ export function PortfolioCardCarousel({ title, images }: PortfolioCardCarouselPr
         className="flex h-full transition-transform duration-300 ease-out"
         style={{ transform: `translateX(-${activeIndex * 100}%)` }}
       >
-        {images.map((image, index) => (
-          <div key={`${title}-${image}`} className="relative h-full w-full shrink-0 grow-0 basis-full">
+        {resolvedImages.map((image, index) => (
+          <div key={`${title}-${image}`} className="relative h-full min-h-full w-full shrink-0 grow-0 basis-full">
             <Image
               src={image}
               alt={`${title} - foto ${index + 1}`}
@@ -79,6 +103,7 @@ export function PortfolioCardCarousel({ title, images }: PortfolioCardCarouselPr
               sizes="(min-width: 1024px) 50vw, 100vw"
               loading={index === 0 ? "eager" : "lazy"}
               className="object-cover object-center"
+              onError={() => handleImageError(index)}
             />
           </div>
         ))}
@@ -104,7 +129,7 @@ export function PortfolioCardCarousel({ title, images }: PortfolioCardCarouselPr
           </button>
 
           <div className="absolute inset-x-0 bottom-4 flex items-center justify-center gap-2 px-4">
-            {images.map((image, index) => {
+            {resolvedImages.map((image, index) => {
               const isActive = activeIndex === index;
 
               return (
